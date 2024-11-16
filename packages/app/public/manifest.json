@@ -1,15 +1,15 @@
 {
-  "short_name": "Backstage",
-  "name": "Backstage",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "48x48",
-      "type": "image/png"
-    }
-  ],
-  "start_url": "./index.html",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
-}
+    "short_name": "Backstage",
+    "name": "Backstage",
+    "icons": [
+      {
+        "src": "dall__e_2024-06-03_11.02.20_-_style_fish_wearing_a__hacking_on_a_computer_digital_art_720-min.png",
+        "sizes": "48x48",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "./index.html",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+  }

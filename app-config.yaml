@@ -1,9 +1,9 @@
 app:
-  title: Scaffolded Backstage App
+  title: Gibson's Belligerant Bootcamp Backstage App
   baseUrl: http://localhost:3000
 
 organization:
-  name: My Company
+  name: Gibson's Conformative Cooperative Company
 
 backend:
   # Used for enabling authentication, secret is shared by all backend plugins
@@ -32,16 +32,16 @@ backend:
     connection: ':memory:'
   # workingDirectory: /tmp # Use this to configure a working directory for the scaffolder, defaults to the OS temp-dir
 
-integrations:
-  github:
-    - host: github.com
-      # This is a Personal Access Token or PAT from GitHub. You can find out how to generate this token, and more information
-      # about setting up the GitHub integration here: https://backstage.io/docs/integrations/github/locations#configuration
-      token: ${GITHUB_TOKEN}
-    ### Example for how to add your GitHub Enterprise instance using the API:
-    # - host: ghe.example.net
-    #   apiBaseUrl: https://ghe.example.net/api/v3
-    #   token: ${GHE_TOKEN}
+# integrations:
+#   github:
+#     - host: github.com
+#       # This is a Personal Access Token or PAT from GitHub. You can find out how to generate this token, and more information
+#       # about setting up the GitHub integration here: https://backstage.io/docs/integrations/github/locations#configuration
+#       token: ${GITHUB_TOKEN}
+#     ### Example for how to add your GitHub Enterprise instance using the API:
+#     # - host: ghe.example.net
+#     #   apiBaseUrl: https://ghe.example.net/api/v3
+#     #   token: ${GHE_TOKEN}
 
 proxy:
   ### Example for how to add a proxy endpoint for the frontend.
@@ -62,11 +62,11 @@ techdocs:
   publisher:
     type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
 
-auth:
-  # see https://backstage.io/docs/auth/ to learn about auth providers
-  providers:
-    # See https://backstage.io/docs/auth/guest/provider
-    guest: {}
+# auth:
+#   # see https://backstage.io/docs/auth/ to learn about auth providers
+#   providers:
+#     # See https://backstage.io/docs/auth/guest/provider
+#     guest: {}
 
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
@@ -77,6 +77,15 @@ catalog:
     pullRequestBranchName: backstage-integration
   rules:
     - allow: [Component, System, API, Resource, Location]
+  providers:
+    githubOrg:
+      id: production
+      githubUrl: https://github.com
+      orgs: ['backstage-gibson']
+      schedule:
+        initialDelay: { seconds: 30 }
+        frequency: { hours: 1 }
+        timeout: { minutes: 50 }
   locations:
     # Local example data, file locations are relative to the backend process, typically `packages/backend`
     - type: file

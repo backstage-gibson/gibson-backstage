@@ -78,30 +78,46 @@ catalog:
   rules:
     - allow: [Component, System, API, Resource, Location]
   providers:
-    githubOrg:
-      id: production
+    githubOrg: # This only collects users and groups
+      id: github
       githubUrl: https://github.com
       orgs: ['backstage-gibson']
       schedule:
-        initialDelay: { seconds: 30 }
+        initialDelay: { seconds: 10 }
         frequency: { hours: 1 }
-        timeout: { minutes: 50 }
-  locations:
+        timeout: { minutes: 3 }
+    github: # This collects repositories
+      backstage-gibson:
+        organization: 'backstage-gibson'
+        catalogPath: '/catalog-info.yaml'
+        filters:
+          branch: 'main'
+          repository: '.*'
+        schedule:
+          initialDelay: { seconds: 10 }
+          frequency: { hours: 1 }
+          timeout: { minutes: 3 }
+        validateLocationsExist: true
+
+    
+  # locations:
+  #   - type: url
+  #     target: https://github.com/backstage-gibson/your-repo-name/blob/main/catalog-info.yaml
     # Local example data, file locations are relative to the backend process, typically `packages/backend`
-    - type: file
-      target: ../../examples/entities.yaml
+    # - type: file
+    #   target: ../../examples/entities.yaml
 
-    # Local example template
-    - type: file
-      target: ../../examples/template/template.yaml
-      rules:
-        - allow: [Template]
+    # # Local example template
+    # - type: file
+    #   target: ../../examples/template/template.yaml
+    #   rules:
+    #     - allow: [Template]
 
-    # Local example organizational data
-    - type: file
-      target: ../../examples/org.yaml
-      rules:
-        - allow: [User, Group]
+    # # Local example organizational data
+    # - type: file
+    #   target: ../../examples/org.yaml
+    #   rules:
+    #     - allow: [User, Group]
 
     ## Uncomment these lines to add more example data
     # - type: url

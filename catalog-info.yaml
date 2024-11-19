@@ -9,5 +9,5 @@ metadata:
   #   backstage.io/techdocs-ref: dir:.
 spec:
   type: website
-  owner: gibson.smith@liatrio.com
+  owner: backstage-dev-team
   lifecycle: experimental

@@ -58,7 +58,7 @@ proxy:
 techdocs:
   builder: 'local' # Alternatives - 'external'
   generator:
-    runIn: 'docker' # Alternatives - 'local'
+    runIn: 'local' # Alternatives - 'local'
   publisher:
     type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
 
@@ -76,14 +76,13 @@ catalog:
     entityFilename: catalog-info.yaml
     pullRequestBranchName: backstage-integration
   rules:
-    - allow: [Component, System, API, Resource, Location]
+    - allow: [Component, System, API, Resource, Location, Template]
   providers:
     githubOrg: # This only collects users and groups
       id: github
       githubUrl: https://github.com
       orgs: ['backstage-gibson']
       schedule:
-        initialDelay: { seconds: 10 }
         frequency: { hours: 1 }
         timeout: { minutes: 3 }
     github: # This collects repositories
@@ -94,13 +93,16 @@ catalog:
           branch: 'main'
           repository: '.*'
         schedule:
-          initialDelay: { seconds: 10 }
           frequency: { hours: 1 }
           timeout: { minutes: 3 }
         validateLocationsExist: true
 
     
-  # locations:
+  locations:
+    - type: file
+      target: /Users/admin/backstage/test-docs-template/template.yaml
+      rules:
+        - allow: [Template]
   #   - type: url
   #     target: https://github.com/backstage-gibson/your-repo-name/blob/main/catalog-info.yaml
     # Local example data, file locations are relative to the backend process, typically `packages/backend`

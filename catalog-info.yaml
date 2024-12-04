@@ -1,11 +1,11 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: gibson-Bootcamp-app
+  name: gibson-Bootcamp-Backstage
   description: An example of a Backstage application for the Liatrio bootcamp.
   # Example for optional annotations
-  # annotations:
-  #   github.com/project-slug: backstage/backstage
+  annotations:
+    github.com/project-slug: backstage-gibson/gibson-backstage
   #   backstage.io/techdocs-ref: dir:.
 spec:
   type: website

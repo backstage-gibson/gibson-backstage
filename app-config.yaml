@@ -103,6 +103,10 @@ catalog:
       target: /Users/admin/backstage/test-docs-template/template.yaml
       rules:
         - allow: [Template]
+    - type: url
+      target: https://github.com/backstage-gibson/asdfasdf/blob/master/template.yaml
+      rules:
+        - allow: [Template]
   #   - type: url
   #     target: https://github.com/backstage-gibson/your-repo-name/blob/main/catalog-info.yaml
     # Local example data, file locations are relative to the backend process, typically `packages/backend`

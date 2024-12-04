@@ -1,0 +1,22 @@
+# Backstage override configuration for your local development environment
+auth:
+  environment: development
+  providers:
+    github:
+      development:
+        clientId: your client id
+        clientSecret: your client secret
+        signIn:
+          resolvers:
+            - resolver: usernameMatchingUserEntityName
+
+integrations:
+  github:
+    - host: github.com
+      apps:
+        - appId: you app id
+          privateKey: |
+            your rsa key
+          clientId: your client id
+          clientSecret: your client secret
+          webhookSecret: your webhookSecret if you need one
